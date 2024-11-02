@@ -1,9 +1,15 @@
+// src/components/Navbar.js
+import Link from 'next/link';
 import './index.scss';
 
-export default function navbar() {
-    return(
-        <nav className="navbar">
-            <h1 className="page-title">Filmes</h1>
-        </nav>
-    )
+export default function Navbar() {
+    return (
+        <div>
+            <nav className="navbar">
+                <Link href="/" className="page-title">
+                    <h1>NeoMatrix Play</h1>
+                </Link>
+            </nav>
+        </div>
+    );
 }

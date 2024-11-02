@@ -10,11 +10,12 @@ import { Movie } from '@/types/movies';
 export default function MovieList() {
     
     const [movies, setMovies] = useState<Movie[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
     useEffect(() => {   
         getMovies();
     }, []);
 
-    const getMovies = () => {
+    const getMovies =  () => {
         axios({
             method: 'get',
             url: 'https://api.themoviedb.org/3/discover/movie',
@@ -25,8 +26,9 @@ export default function MovieList() {
         }).then(response => {
             setMovies(response.data.results);
             console.log(response.data.results);
-        })
+        });
     }
+
     
     return(
         <ul className='movie-list'>

@@ -1,7 +1,6 @@
 import { Movie } from "@/types/movies"
 import StarRating from "../StarRating";
 import './index.scss'
-import navbar from "../Navbar";
 
 export interface Props{
     movie: Movie
@@ -45,7 +44,7 @@ export default function MovieCard(props: Props){
                         }
                     </p>
                     }
-                    <button className="btn-default">
+                    <button className="btn-default" onClick={() => window.location.href = 'http://localhost:3000/pages/films'}>
                         Ver mais
                     </button>
                 </div>
