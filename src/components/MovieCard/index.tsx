@@ -20,7 +20,7 @@ export default function MovieCard(props: Props){
             </div>
             <div className="">
                 <p>
-                    {movie.tile}
+                    {movie.title}
                 </p>
             </div>
 
