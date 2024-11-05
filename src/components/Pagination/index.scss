@@ -1,0 +1,19 @@
+/* index.scss */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination button {
+    margin: 0 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+  
+  .pagination .active {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  
