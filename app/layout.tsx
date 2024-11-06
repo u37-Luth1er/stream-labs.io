@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
+import "./globals.scss";
+import Navbar from "@/components/Navbar";
+import Image from "next/image";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,10 +28,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        
+        {/* Background full-screen fixed */}
+        <div className="fixed inset-0 -z-10 w-full h-full">
+          <AspectRatio ratio={16 / 9} className="w-screen h-screen">
+            <Image
+              src="https://images.hdqwalls.com/download/the-big-universe-is-here-4k-q4-3840x2160.jpg"
+              alt="Background Image"
+              layout="fill"
+              className="object-cover"
+            />
+          </AspectRatio>
+        </div>
+
+        {/* Navbar and content */}
+        <div className="relative z-10">
+          <Navbar />
+          {children}
+        </div>
       </body>
     </html>
   );
