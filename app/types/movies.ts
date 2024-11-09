@@ -1,7 +1,8 @@
 export interface Movie{
     id: number,
     title: string,
-    overview: string,
-    poster_path: string, 
-    vote_average: number
+    sinopse: string,
+    image: string, 
+    average_rating: number,
+    stream_url: string
 }

@@ -4,6 +4,16 @@ import "./globals.scss";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination"
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -46,6 +56,29 @@ export default function RootLayout({
         <div className="relative z-10">
           <Navbar />
           {children}
+          <Pagination>
+            <PaginationContent>
+              <PaginationItem className="pagination-item">
+                <PaginationPrevious href="#" />
+              </PaginationItem>
+              <PaginationItem className="pagination-item">
+                <PaginationLink href="#">1</PaginationLink>
+              </PaginationItem>
+              <PaginationItem className="pagination-item">
+                <PaginationLink href="#">2</PaginationLink>
+              </PaginationItem>
+              <PaginationItem className="pagination-item">
+                <PaginationLink href="#">3</PaginationLink>
+              </PaginationItem>
+              <PaginationItem className="pagination-item">
+                <PaginationEllipsis />
+              </PaginationItem>
+              <PaginationItem className="pagination-item">
+                <PaginationNext href="#" />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+
         </div>
       </body>
     </html>

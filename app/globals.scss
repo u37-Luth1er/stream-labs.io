@@ -81,3 +81,56 @@ body {
     @apply bg-background text-foreground;
   }
 }
+.pagination-content {
+  display: flex; /* Flexbox para alinhar os itens de paginação em linha */
+  justify-content: center; /* Centraliza os itens horizontalmente */
+  align-items: center; /* Alinha verticalmente */
+}
+
+.pagination-item {
+  margin: 0 4px; /* Espaçamento entre os itens */
+  display: flex; /* Flexbox para centralizar */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+}
+
+.pagination-item a, .pagination-item span {
+  color: #ffffff; /* Cor do texto (número) branco */
+  background-color: #8a2be2; /* Cor fixa roxa para o fundo do botão */
+  padding: 10px 20px; /* Espessura do botão */
+  border-radius: 25px; /* Bordas arredondadas */
+  text-decoration: none; /* Remove o sublinhado */
+  display: inline-flex; /* Garante que o conteúdo seja tratado como flexível */
+  align-items: center; /* Garante que o texto fique centralizado verticalmente */
+  justify-content: center; /* Garante que o texto fique centralizado horizontalmente */
+  font-weight: bold; /* Texto em negrito */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transições suaves */
+}
+
+.pagination-item a:hover, .pagination-item span:hover {
+  background-color: #8a2be2; /* Cor roxa fixa no hover */
+  color: #ff00ff; /* Número fica neon roxo no hover */
+  transform: scale(1.1); /* Aumenta o tamanho do botão no hover */
+}
+
+.pagination-item a:active, .pagination-item span:active {
+  background-color: #6a1b9a; /* Cor roxa escura ao clicar */
+  color: #ffffff; /* Número branco no clique */
+}
+
+.pagination-item .pagination-ellipsis {
+  color: #ffffff; /* Cor do texto para as elipses */
+  background-color: #8a2be2; /* Cor roxa fixa para o fundo das elipses */
+  font-weight: bold;
+}
+
+.pagination-item .pagination-previous, .pagination-item .pagination-next {
+  padding: 10px 15px; /* Ajuste no padding para os botões Previous e Next */
+  border-radius: 25px; /* Mantém bordas arredondadas nos botões Previous e Next */
+}
+
+.pagination-item .pagination-previous:hover,
+.pagination-item .pagination-next:hover {
+  background-color: #8a2be2; /* Mantém o fundo roxo */
+  color: #ff00ff; /* Número/texto em roxo neon */
+}

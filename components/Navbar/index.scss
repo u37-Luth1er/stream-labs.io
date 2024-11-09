@@ -1,59 +1,59 @@
 /* src/components/index.scss */
 
+/* Estilos para a navbar */
 .navbar {
     background-color: #180f2a;
     padding: 12px 3%;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-}
-
-.page-title {
+    align-items: center;
+  }
+  
+  /* Estilo do título */
+  .page-title {
     color: #fff;
-    text-decoration: none; /* Remove o sublinhado */
-    font-size: 24px; /* Tamanho da fonte */
-    font-weight: bold; /* Negrito */
-}
-
-.nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-    margin: 0;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* Centralizar os links */
+  .nav-links {
+    list-style-type: none;
     padding: 0;
-    font-size: 1rem;
-    color: #fff;
-}
-
-.nav-links li {
-    cursor: pointer;
-}
-
-.nav-links a {
+    display: flex;
+    gap: 20px;
+    justify-content: center; /* Centraliza os links */
+    flex-grow: 1; /* Permite que a lista ocupe o espaço restante */
+  }
+  
+  /* Estilos para os links */
+  .nav-links a {
     color: white;
     text-decoration: none;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover {
-    color: yellow; /* Muda para amarelo ao passar o mouse */
-}
-
-.avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 2px solid white;
-}
-
-.avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Se houver regras que aplicam um sublinhado a links */
-a {
+    transition: color 0.3s ease;
+  }
+  
+  /* Efeito de hover para os links */
+  .nav-links a:hover {
+    color: yellow; /* Amarelo ao passar o mouse */
+  }
+  
+  /* Avatar */
+  .avatar {
+    display: flex;
+    align-items: center;
+    margin-left: 20px; /* Distância do avatar para a barra de navegação */
+    z-index: 10;
+  }
+  
+  /* Avatar estilizado */
+  .avatar .cursor-pointer {
+    cursor: pointer;
+  }
+  
+  /* Regras gerais para todos os links */
+  a {
     text-decoration: none; /* Remove o sublinhado de todos os links */
-}
+  }
+  

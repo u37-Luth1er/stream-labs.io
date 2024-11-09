@@ -14,7 +14,7 @@ export default function MovieCard(props: Props){
         <li key={movie.id} className='movie-card'>
             <div className="movie-poster">
                 <img 
-                    src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} 
+                    src={`https://image.tmdb.org/t/p/original${movie.image}`} 
                     alt={movie.title}/>
             </div>
 
@@ -23,22 +23,22 @@ export default function MovieCard(props: Props){
                     {movie.title}
                 </p>
 
-                {movie.vote_average > 0 &&
+                {movie.avarage_rating > 0 &&
                     <StarRating
-                    rating={movie.vote_average}
+                    rating={movie.avarage_rating}
                 />
                 }
 
                 <div className="hidden-content">
-                    {movie.overview &&
+                    {movie.sinopse &&
                     <p className="description">
-                        {movie.overview.length > 100 
-                        ? `${movie.overview.substring(0, 100)}...`
-                        : movie.overview
+                        {movie.sinopse.length > 100 
+                        ? `${movie.sinopse.substring(0, 100)}...`
+                        : movie.sinopse
                         }
                     </p>
                     }
-                    <button className="btn-default" onClick={() => window.location.href = 'http://localhost:3000/pages/films'}>
+                    <button className="btn-default" onClick={() => window.location.href = `${movie.stream_url}`}>
                         Ver mais
                     </button>
                 </div>
