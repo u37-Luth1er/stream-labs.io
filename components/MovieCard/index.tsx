@@ -14,7 +14,7 @@ export default function MovieCard(props: Props){
         <li key={movie.id} className='movie-card'>
             <div className="movie-poster">
                 <img 
-                    src={`https://image.tmdb.org/t/p/original${movie.image}`} 
+                    src={movie.image} 
                     alt={movie.title}/>
             </div>
 
