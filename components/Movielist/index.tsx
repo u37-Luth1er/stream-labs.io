@@ -10,7 +10,6 @@ import { Movie } from '@/types/movies';
 export default function MovieList() {
     
     const [movies, setMovies] = useState<Movie[]>([]);
-    const [isLoading, setIsLoading] = useState<boolean>(true);
     useEffect(() => {   
         getMovies();
     }, []);
