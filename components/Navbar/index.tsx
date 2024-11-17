@@ -8,6 +8,16 @@ import {
   AvatarImage,
 } from "@/components/ui/avatar";
 
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+  } from "@/components/ui/dropdown-menu"
+  
+
 export default function Navbar() {
 
   return (
@@ -33,14 +43,33 @@ export default function Navbar() {
           </li>
         </ul>
 
-        {/* Avatar */}
-        <div className="avatar relative">
-          <Avatar className="cursor-pointer">
-            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
+
+{/* Avatar e Menu */}
+
+    <div className="relative">
+    <DropdownMenu>
+    {/* Envolve o Avatar com DropdownMenuTrigger */}
+    <DropdownMenuTrigger asChild>
+      <div className="avatar cursor-pointer">
+        <Avatar>
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+      </div>
+    </DropdownMenuTrigger>
+
+    {/* Conteúdo do Dropdown */}
+        <DropdownMenuContent>
+        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>Profile</DropdownMenuItem>
+        <DropdownMenuItem>Billing</DropdownMenuItem>
+        <DropdownMenuItem>Team</DropdownMenuItem>
+        <DropdownMenuItem>Subscription</DropdownMenuItem>
+        </DropdownMenuContent>
+    </DropdownMenu>
         </div>
-      </nav>
+        </nav>
     </div>
   );
 }

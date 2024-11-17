@@ -14,7 +14,7 @@ export default function MovieCard(props: Props){
         <li key={movie.id} className='movie-card'>
             <div className="movie-poster">
                 <img 
-                    src={movie.image} 
+                    src={movie.image.replace("/w185/", "/original/")} 
                     alt={movie.title}/>
             </div>
 
