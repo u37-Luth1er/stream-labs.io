@@ -3,7 +3,7 @@
 /* Estilos para a navbar */
 .navbar {
     background-color: #180f2a;
-    padding: 12px 3%;
+    padding: 3px 3%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -56,4 +56,98 @@
   a {
     text-decoration: none; /* Remove o sublinhado de todos os links */
   }
+  .label-item {
+    position: relative; /* Necessário para o posicionamento absoluto da label */
+    display: flex;
+    align-items: center; /* Centraliza o conteúdo */
+    gap: 10px; /* Espaçamento entre o texto "Podcast" e a label */
+    padding: 8px 16px; /* Padding interno */
+    margin: 10px 0; /* Espaçamento vertical */
+    border-radius: 10px; /* Bordas arredondadas para um visual mais suave */
+    background: rgba(255, 255, 255, 0.1); /* Fundo com transparência */
+    backdrop-filter: blur(10px); /* Efeito de desfoque no fundo */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    transition: all 0.3s ease; /* Transição suave para interações */
+  }
   
+  /* Efeito de hover */
+  .podcast-item:hover {
+    background: rgba(255, 255, 255, 0.3); /* Aumenta a opacidade no hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra mais forte */
+    transform: scale(1.05); /* Pequeno zoom no hover */
+  }
+  
+  /* Nome do Podcast */
+  .labe-link {
+    font-size: 1.1rem; /* Tamanho do texto ajustado */
+    text-decoration: none;
+    color: #fff; /* Cor do texto */
+    font-weight: 600; /* Deixa o texto em negrito */
+    transition: color 0.3s ease; /* Transição suave para cor */
+  }
+  
+  .podcast-link:hover {
+    color: #00d4ff; /* Cor para o hover */
+  }
+  
+  .musica-item {
+    position: relative; /* Para que o span seja posicionado relativo ao li */
+    display: flex;
+    align-items: center; /* Alinha o link Podcast no centro */
+    gap: 4px; /* Espaçamento entre label e Podcast */
+  }
+
+  .livros-item {
+    position: relative; /* Para que o span seja posicionado relativo ao li */
+    display: flex;
+    align-items: center; /* Alinha o link Podcast no centro */
+    gap: 4px; /* Espaçamento entre label e Podcast */
+  }
+
+  .series-item {
+    position: relative; /* Para que o span seja posicionado relativo ao li */
+    display: flex;
+    align-items: center; /* Alinha o link Podcast no centro */
+    gap: 4px; /* Espaçamento entre label e Podcast */
+  }
+
+
+  .feature-label {
+    position: absolute; /* Posiciona a label no canto superior direito */
+    top: -13px; /* Move a label para cima */
+    right: -11px; /* Move a label para a direita */
+    font-size: 0.4rem; /* Ajuste o tamanho conforme necessário */
+    color: white; /* Cor do texto */
+    background: linear-gradient(45deg, #00ff87, #00d4ff); /* Gradiente neon verde e azul */
+    padding: 4px 8px; /* Aumentei um pouco o padding para mais legibilidade */
+    border-radius: 8px; /* Bordas mais arredondadas para um toque moderno */
+    z-index: 1; /* Garante que fique na frente de Podcast */
+    
+    /* Efeito Neon */
+    text-shadow: 0 0 5px rgba(0, 255, 135, 0.8), 0 0 10px rgba(0, 255, 135, 0.8), 0 0 15px rgba(0, 255, 135, 0.8), 0 0 20px rgba(0, 255, 135, 0.8); /* Brilho ao redor do texto */
+    box-shadow: 0 0 10px rgba(0, 255, 135, 0.5), 0 0 20px rgba(0, 255, 135, 0.5), 0 0 30px rgba(0, 255, 135, 0.5); /* Efeito glow na borda */
+  }
+  
+  
+  .podcast-link {
+    font-size: 1rem; /* Tamanho normal para o texto Podcast */
+    text-decoration: none;
+    color: inherit; /* Mantém a cor global */
+    position: relative;
+  }
+  
+  /* Menu dropdown */
+.DropdownMenuContent {
+  background: rgba(255, 255, 255, 0.9); /* Fundo transparente para o menu */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.DropdownMenuItem {
+  padding: 10px 20px; /* Padding do item */
+  transition: background-color 0.3s ease;
+}
+
+.DropdownMenuItem:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Efeito de hover no item do menu */
+}

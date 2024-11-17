@@ -24,7 +24,7 @@ export default function MovieList() {
             method: 'get',
             url: 'http://localhost:8080/consultar/filmes/busca',
             params: {
-                genero: 'terror',
+                genero: 'comédi',
                 pagina: page,
                 limite: 40,
                 rating: true
@@ -51,10 +51,8 @@ export default function MovieList() {
             {/* Paginação */}
             <div className="pagination">
                 <button onClick={() => handlePagination(currentPage - 1)} disabled={currentPage <= 1}>
-                    Anterior
                 </button>
                 <button onClick={() => handlePagination(currentPage + 1)}>
-                    Próxima
                 </button>
             </div>
         </>
