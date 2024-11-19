@@ -3,8 +3,13 @@ import localFont from "next/font/local";
 import "./globals.scss";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
+import LandingBar from "@/components/LandingNav";
 import PaginationClient from "@/components/PaginationClient";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import LoggedNav from "@/components/LoggedNavBar";
+import PagHyper from "@/components/PaginationHyper";
+
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -35,7 +40,7 @@ export default function RootLayout({
         <div className="fixed inset-0 -z-10 w-full h-full">
           <AspectRatio ratio={16 / 9} className="w-screen h-screen">
             <Image
-              src="https://images.hdqwalls.com/download/the-big-universe-is-here-4k-q4-3840x2160.jpg"
+              src="https://assets.nflxext.com/ffe/siteui/vlv3/03ad76d1-e184-4d99-ae7d-708672fa1ac2/web/BR-pt-20241111-TRIFECTA-perspective_1b6d896f-f960-4456-8070-9d4b4a68946d_large.jpg"
               alt="Background Image"
               layout="fill"
               className="object-cover"
@@ -45,9 +50,9 @@ export default function RootLayout({
 
         {/* Navbar and content */}
         <div className="relative z-10">
-          <Navbar />
+          
           {children}
-          <PaginationClient />
+          
         </div>
       </body>
     </html>

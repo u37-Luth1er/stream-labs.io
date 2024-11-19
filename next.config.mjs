@@ -4,7 +4,7 @@ const nextConfig = {
     remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'images.hdqwalls.com',
+                hostname: 'assets.nflxext.com',
                 port: '', // Deixe vazio para usar a porta padrão
                 pathname: '/**', // Permite todas as rotas neste domínio
             },

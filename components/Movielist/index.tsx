@@ -24,7 +24,7 @@ export default function MovieList() {
             method: 'get',
             url: 'http://localhost:8080/consultar/filmes/busca',
             params: {
-                genero: 'comédi',
+                genero: 'crime',
                 pagina: page,
                 limite: 40,
                 rating: true

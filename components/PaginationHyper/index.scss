@@ -1,0 +1,11 @@
+.pagination-option {
+    background-color: rgba(24, 15, 42, 0.9); /* Fundo semi-transparente */
+    border-color: rgba(24, 15, 42, 0.9);    /* Borda semi-transparente */
+    color: white;                           /* Texto permanece legível */
+    backdrop-filter: blur(10px);            /* Adiciona um leve desfoque para sofisticação */
+    border-radius: 8px;                     /* Bordas arredondadas para um estilo mais moderno */
+  }
+  .pagination-option:hover {
+    background-color: rgba(24, 15, 42, 0.7);  /* Fundo mais transparente ao passar o mouse */
+    border-color: rgba(24, 15, 42, 0.7);      /* Borda mais transparente ao passar o mouse */
+  }

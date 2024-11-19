@@ -1,10 +1,14 @@
-import MovieList from "@/components/Movielist";
+import LandingBanner from "@/components/Bannner";
+import LandingBar from "@/components/LandingNav";
+import "./globals.scss";
 
 
 export default function Home() {
   return (
+    
     <div>
-      <MovieList />
+      <LandingBar />
+      <LandingBanner />
     </div>
   );
 }
