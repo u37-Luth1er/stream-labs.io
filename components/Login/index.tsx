@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useState, FormEvent } from "react"; // Importe o tipo FormEvent
 import Cookies from 'js-cookie'; // Instale a biblioteca: npm install js-cookie
 import { useRouter } from 'next/navigation'; // Importe o useRouter
 import "./index.scss";
@@ -10,7 +10,8 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const router = useRouter(); // Instancia o router
 
-  const handleSubmit = async (event) => {
+  // Tipagem do evento para FormEvent de um formulário HTML
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Impede o envio padrão do formulário
 
     const payload = { username, password };
