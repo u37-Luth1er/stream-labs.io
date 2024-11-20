@@ -5,56 +5,117 @@ import './index.scss';
 import axios from 'axios';
 import MovieCard from '../MovieCard';
 import { Movie } from '@/types/movies';
-import { useRouter, useSearchParams } from 'next/navigation';  // Importa os hooks necessários
+import { useRouter, useSearchParams } from 'next/navigation';
+import Cookies from 'js-cookie';
 
 export default function MovieList() {
-    const [movies, setMovies] = useState<Movie[]>([]);
-    const router = useRouter();  // Hook para navegar entre páginas
-    const searchParams = useSearchParams();  // Hook para acessar os parâmetros da URL
-    
-    // Pega o número da página atual a partir da URL, se não existir, usa o valor 1
-    const currentPage = Number(searchParams.get('pagina')) || 1;
+  const [movies, setMovies] = useState<Movie[]>([]);
+  const [isLoading, setIsLoading] = useState(true); // Estado para controlar o carregamento
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
-    useEffect(() => {
-        getMovies(currentPage);  // Chama a função getMovies passando a página atual
-    }, [currentPage]);  // Dependência do currentPage para refazer a requisição ao mudar
+  // Função para verificar se o token é válido
+  const checkAuthToken = async () => {
+    const token = Cookies.get("authToken");
 
-    const getMovies = (page: number) => {
-        axios({
-            method: 'get',
-            url: 'http://localhost:8080/consultar/filmes/busca',
-            params: {
-                genero: 'crime',
-                pagina: page,
-                limite: 40,
-                rating: true
-            }
-        }).then(response => {
-            setMovies(response.data);
-            console.log(response.data);
-        });
-    };
+    if (!token) {
+      console.error("Token não encontrado. Redirecionando para login...");
+      router.push("/pages/login");
+      return;
+    }
 
-    const handlePagination = (page: number) => {
-        // Altera a URL com o novo número da página
-        router.push(`?genero=terror&pagina=${page}&limite=40&rating=true`);
-    };
+    try {
+      const response = await axios.get('http://localhost:8080/profile/protected', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-    return (
-        <>
-            <ul className='movie-list'>
-                {movies.map((movie) => (
-                    <MovieCard key={movie.id} movie={movie} />
-                ))}
-            </ul>
+      if (response.status !== 200) {
+        console.warn("Token inválido. Redirecionando para login...");
+        router.push("/pages/login");
+      } else {
+        setIsLoading(false); // Token válido, libera o carregamento da página
+      }
+    } catch (error) {
+      console.error("Erro na validação do token:", error);
+      router.push("/pages/login");
+    }
+  };
 
-            {/* Paginação */}
-            <div className="pagination">
-                <button onClick={() => handlePagination(currentPage - 1)} disabled={currentPage <= 1}>
-                </button>
-                <button onClick={() => handlePagination(currentPage + 1)}>
-                </button>
-            </div>
-        </>
-    );
+  useEffect(() => {
+    checkAuthToken();
+  }, [router]);
+
+  // Pega o número da página atual a partir da URL, ou usa 1 por padrão
+  const currentPage = Number(searchParams.get('pagina')) || 1;
+
+  useEffect(() => {
+    if (!isLoading) {
+      getMovies(currentPage);
+    }
+  }, [currentPage, isLoading]); // Atualiza os filmes ao mudar a página
+
+  const getMovies = (page: number) => {
+    const token = Cookies.get('authToken');
+
+    if (!token) {
+      console.error("Token ausente. Não é possível buscar filmes.");
+      return;
+    }
+
+    axios({
+      method: 'get',
+      url: 'http://localhost:8080/consultar/filmes/busca',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      params: {
+        genero: 'crime',
+        pagina: page,
+        limite: 40,
+        rating: true,
+      },
+    })
+      .then(response => {
+        setMovies(response.data);
+        console.log('Filmes carregados:', response.data);
+      })
+      .catch(error => {
+        console.error('Erro ao buscar filmes:', error);
+      });
+  };
+
+  const handlePagination = (page: number) => {
+    if (page < 1) return; // Evita páginas negativas
+    router.push(`?genero=crime&pagina=${page}&limite=40&rating=true`);
+  };
+
+  if (isLoading) {
+    // Enquanto valida o token, retorna um carregamento ou tela em branco
+    return <div className="loading">Validando sessão...</div>;
+  }
+
+  return (
+    <>
+      <ul className="movie-list">
+        {movies.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
+      </ul>
+
+      {/* Paginação */}
+      <div className="pagination">
+        <button
+          onClick={() => handlePagination(currentPage - 1)}
+          disabled={currentPage <= 1}
+        >
+          Anterior
+        </button>
+        <button onClick={() => handlePagination(currentPage + 1)}>
+          Próximo
+        </button>
+      </div>
+    </>
+  );
 }

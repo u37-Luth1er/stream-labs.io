@@ -1,5 +1,8 @@
+import LandingBar from "@/components/LandingNav";
+
 export default function TestPage() {
   return (
+    
 <div className="grid h-screen place-content-center bg-white px-4 dark:bg-gray-900">
   <div className="text-center">
     <svg

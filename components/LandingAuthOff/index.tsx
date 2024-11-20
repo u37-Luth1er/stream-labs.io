@@ -5,7 +5,7 @@ import React from "react";
 import "./index.scss";
 
 
-export default function LandingBar() {
+export default function LandingAuthOff() {
   return (
     <header className="navbar-custom">
   <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
@@ -24,58 +24,14 @@ export default function LandingBar() {
 
       <div className="hidden md:block">
         <nav aria-label="navbar relative">
-          <ul className="flex items-center gap-6 text-sm">
-            <li>
-              <a
-                className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-                href="#"
-              >
-                Filmes
-              </a>
-            </li>
 
-            <li>
-              <a
-                className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-                href="#"
-              >
-                Series
-              </a>
-            </li>
-
-            <li>
-              <a
-                className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-                href="#"
-              >
-                Podcasts
-              </a>
-            </li>
-
-            <li>
-              <a
-                className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-                href="#"
-              >
-                Livros
-              </a>
-            </li>
-            <li>
-              <a
-                className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-                href="#"
-              >
-                Reward
-              </a>
-            </li>
-          </ul>
         </nav>
       </div>
 
       <div className="flex items-center gap-4">
         <div className="sm:flex sm:gap-4">
           <a
-            className="rounded-md bg-rose-600 px-5 py-2.5 text-sm font-medium text-white shadow dark:hover:bg-rose-500 hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
+            className="rounded-md bg-rose-600 px-5 py-2.5 text-sm font-medium text-white shadow dark:hover:bg-red-500 hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
             href="/pages/dashboard"
           >
             Login
@@ -84,7 +40,7 @@ export default function LandingBar() {
           <div className="hidden sm:flex">
             <a
               className="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-rose-600 dark:bg-gray-800 dark:text-white dark:hover:text-white/75  hover:text-red-700 focus:outline-none focus:ring active:text-rose-500 sm:w-auto "
-              href="/pages/register"
+              href="#"
             >
               Register
             </a>

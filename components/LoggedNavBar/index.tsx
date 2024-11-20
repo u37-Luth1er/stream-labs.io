@@ -1,8 +1,8 @@
-// src/components/Navbar.tsx
 'use client';
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Cookies from "js-cookie"; 
 import "./index.scss";
 
 export default function LoggedNav() {
@@ -34,12 +34,24 @@ export default function LoggedNav() {
     setIsMenuActive((prevState) => !prevState);
   };
 
+  const handleLogout = () => {
+    // Remover cookies com especificação de domínio e caminho, se necessário
+    Cookies.remove("authToken", { path: "/" }); // Certifique-se de que o caminho está correto
+    Cookies.remove("sessionID", { path: "/" });
+
+    // Verifique a remoção (debug)
+    console.log("Cookies removidos: ", Cookies.get("authToken"), Cookies.get("sessionID"));
+
+    // Redirecionar para a página inicial
+    window.location.href = "/";
+  };
+
   return (
     <header className="navbar-custom">
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
         <div className="flex-1 md:flex md:items-center md:gap-12">
-        <a className="block text-teal-600 dark:text-teal-300" href="#">
+        <a className="block text-rose-600 dark:text-red-300" href="#">
           <span className="sr-only">Home</span>
           <svg className="h-8" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -53,7 +65,7 @@ export default function LoggedNav() {
           <div className="md:flex md:items-center md:gap-12">
             <nav aria-label="Global" className="hidden md:block">
               <ul className="flex items-center gap-6 text-sm">
-                {["About", "Careers", "History", "Services", "Projects", "Blog"].map((item) => (
+                {["Ação", "Aventura", "Terror", "Suspense", "Comédia", "Crime"].map((item) => (
                   <li key={item}>
                     <Link href={`/${item.toLowerCase()}`} className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75">
                       {item}
@@ -92,8 +104,9 @@ export default function LoggedNav() {
                   <Link href="/settings" className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-300" role="menuitem">
                     My data
                   </Link>
-                  <form method="POST" action="#">
+                  <form method="POST" action="/">
                     <button
+                      onClick={handleLogout}
                       type="submit"
                       className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50 dark:text-red-500 dark:hover:bg-red-600/10"
                       role="menuitem"
@@ -112,6 +125,7 @@ export default function LoggedNav() {
                           d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
                         />
                       </svg>
+                      
                       Logout
                     </button>
                   </form>
