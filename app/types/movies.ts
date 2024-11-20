@@ -3,6 +3,6 @@ export interface Movie{
     title: string,
     sinopse: string,
     image: string, 
-    average_rating: number,
+    avarage_rating: number,
     stream_url: string
 }
