@@ -14,6 +14,10 @@ export default function MovieList() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
+  const genero = searchParams.get('genero') || 'aventura'; // Pega o gênero da query string, com 'crime' como valor padrão
+  
+  const currentPage = Number(searchParams.get('pagina')) || 1;
+
   // Função para verificar se o token é válido
   const checkAuthToken = async () => {
     const token = Cookies.get("authToken");
@@ -47,16 +51,13 @@ export default function MovieList() {
     checkAuthToken();
   }, [router]);
 
-  // Pega o número da página atual a partir da URL, ou usa 1 por padrão
-  const currentPage = Number(searchParams.get('pagina')) || 1;
-
   useEffect(() => {
     if (!isLoading) {
-      getMovies(currentPage);
+      getMovies(currentPage, genero);
     }
-  }, [currentPage, isLoading]); // Atualiza os filmes ao mudar a página
+  }, [currentPage, isLoading, genero]); // Atualiza os filmes ao mudar o gênero ou a página
 
-  const getMovies = (page: number) => {
+  const getMovies = (page: number, genre: string) => {
     const token = Cookies.get('authToken');
 
     if (!token) {
@@ -71,7 +72,7 @@ export default function MovieList() {
         Authorization: `Bearer ${token}`,
       },
       params: {
-        ano: '2024',
+        genero: genre,  // Passa o gênero para a requisição
         pagina: page,
         limite: 40,
         rating: true,
@@ -88,12 +89,12 @@ export default function MovieList() {
 
   const handlePagination = (page: number) => {
     if (page < 1) return; // Evita páginas negativas
-    router.push(`?pagina=${page}`);
+    router.push(`?genero=${genero}&pagina=${page}&limite=40&rating=true`);
   };
 
   if (isLoading) {
     // Enquanto valida o token, retorna um carregamento ou tela em branco
-    return <div className="loading"></div>;
+    return <div className="loading">Validando sessão...</div>;
   }
 
   return (
@@ -110,8 +111,10 @@ export default function MovieList() {
           onClick={() => handlePagination(currentPage - 1)}
           disabled={currentPage <= 1}
         >
+          Anterior
         </button>
         <button onClick={() => handlePagination(currentPage + 1)}>
+          Próximo
         </button>
       </div>
     </>

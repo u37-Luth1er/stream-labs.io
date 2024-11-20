@@ -1,13 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.scss";
-import Navbar from "@/components/Navbar";
 import Image from "next/image";
-import LandingBar from "@/components/LandingNav";
-import PaginationClient from "@/components/PaginationClient";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import LoggedNav from "@/components/LoggedNavBar";
-import PagHyper from "@/components/PaginationHyper";
 
 
 

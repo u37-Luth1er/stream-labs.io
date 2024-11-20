@@ -45,6 +45,9 @@ export default function LoggedNav() {
     // Redirecionar para a página inicial
     window.location.href = "/";
   };
+  const handleGenreClick = (genre: string) => {
+    router.push(`?genero=${genre}&pagina=1&limite=40&rating=true`);
+  };
 
   return (
     <header className="navbar-custom">
