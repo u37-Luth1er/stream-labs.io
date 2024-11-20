@@ -19,18 +19,13 @@
       }
     ],
     "paths": {
-      "@/*": ["src/*"],  // Define o alias '@' para a pasta 'src'
-      "@/components/*": ["src/components/*"],  // Define o alias '@components' para a pasta 'src/components'
-      "@/types/*": ["src/types/*"]  // Define o alias '@types' para a pasta 'src/types'
+      "@/*": ["./*"],
+      "@/types/*": ["./app/types/*"], // Alias para 'app/types'
+      "@/components/*": ["./components/*"]
     }
   },
   
-  "include": [
-    "next-env.d.ts", 
-    "**/*.ts", 
-    ".next/types/**/*.ts",
-    "src/**/*",  // Inclui a pasta 'src'
-    "types/**/*"  // Inclui a pasta 'types' caso exista
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", ".next/types/**/*.ts","src/**/*","types/**/*"],
   "exclude": ["node_modules"]
+
 }
