@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"],
+    "baseUrl": ".",
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -18,11 +19,12 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"],
-      "@types/*": ["types/*"]
+      "@/*": ["src/*"],  // Define o alias '@' para a pasta 'src'
+      "@/types/*": ["src/types/*"]  // Define o alias '@types' para a pasta 'src/types'
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts","src/**/*","types/**/*"],
+  
+  "include": ["next-env.d.ts", "**/*.ts", ".next/types/**/*.ts","src/**/*","types/**/*"],
   "exclude": ["node_modules"]
 
 }
