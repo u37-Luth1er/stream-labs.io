@@ -1,4 +1,4 @@
-import { Movie } from "../../types/movies";
+import { Movie } from "@/app/types/movies";
 import StarRating from "../StarRating";
 import './index.scss'
 
