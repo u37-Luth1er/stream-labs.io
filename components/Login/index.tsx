@@ -55,7 +55,7 @@ export default function LoginPage() {
   return (
     <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-lg">
-        <h1 className="text-center text-2xl font-bold text-red-600 sm:text-3xl">Login</h1>
+        <h1 className="text-center text-2xl font-bold text-red-600 sm:text-3xl"></h1>
 
         <form
           onSubmit={handleSubmit}
@@ -97,12 +97,12 @@ export default function LoginPage() {
             type="submit"
             className="block w-full rounded-lg bg-rose-600 px-5 py-3 text-sm font-medium text-white"
           >
-            Sign in
+            Entrar
           </button>
 
           <p className="text-center text-sm text-white">
-            No account?
-            <a className="underline" href="#"> Sign up</a>
+           Não tem conta ?
+            <a className="underline" href="#"> Cadastrar</a>
           </p>
         </form>
       </div>
