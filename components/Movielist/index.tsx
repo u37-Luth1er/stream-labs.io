@@ -49,14 +49,15 @@ export default function MovieList() {
 
   // Pega o número da página atual a partir da URL, ou usa 1 por padrão
   const currentPage = Number(searchParams.get('pagina')) || 1;
+  const gener = searchParams.get('genero') || 'crime';
 
   useEffect(() => {
     if (!isLoading) {
-      getMovies(currentPage);
+      getMovies(currentPage, gener); // Inclui o gênero na chamada da função
     }
-  }, [currentPage, isLoading]); // Atualiza os filmes ao mudar a página
+  }, [currentPage, gener, isLoading]); // Adiciona `gener` como dependência
 
-  const getMovies = (page: number) => {
+  const getMovies = (page: number, gener: string) => {
     const token = Cookies.get('authToken');
 
     if (!token) {
@@ -71,7 +72,7 @@ export default function MovieList() {
         Authorization: `Bearer ${token}`,
       },
       params: {
-        ano: '2024',
+        genero: gener, // Passa o gênero explicitamente como objeto
         pagina: page,
         limite: 40,
         rating: true,
@@ -86,10 +87,6 @@ export default function MovieList() {
       });
   };
 
-  const handlePagination = (page: number) => {
-    if (page < 1) return; // Evita páginas negativas
-    router.push(`?pagina=${page}`);
-  };
 
   if (isLoading) {
     // Enquanto valida o token, retorna um carregamento ou tela em branco
@@ -103,17 +100,6 @@ export default function MovieList() {
           <MovieCard key={movie.id} movie={movie} />
         ))}
       </ul>
-
-      {/* Paginação */}
-      <div className="pagination">
-        <button
-          onClick={() => handlePagination(currentPage - 1)}
-          disabled={currentPage <= 1}
-        >
-        </button>
-        <button onClick={() => handlePagination(currentPage + 1)}>
-        </button>
-      </div>
     </>
   );
 }

@@ -52,8 +52,8 @@ export default function LandingBanner() {
           </h1>
 
           <p className="mt-4 max-w-lg text-white sm:text-xl/relaxed">
-            Mais de 4.000 filmes e mais de 3 mil séries para você assistir com sua família.
-            O melhor de tudo, sem anúncios!
+            Faça upload dos seus filmes favoritos e assista localmente!
+            Tenha uma biblioteca de filmes privada e seu proprio serviço de streaming.
           </p>
 
           <center>

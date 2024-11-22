@@ -14,10 +14,6 @@ export default function MovieList() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const genero = searchParams.get('genero') || 'aventura'; // Pega o gênero da query string, com 'crime' como valor padrão
-  
-  const currentPage = Number(searchParams.get('pagina')) || 1;
-
   // Função para verificar se o token é válido
   const checkAuthToken = async () => {
     const token = Cookies.get("authToken");
@@ -51,13 +47,17 @@ export default function MovieList() {
     checkAuthToken();
   }, [router]);
 
+  // Pega o número da página atual a partir da URL, ou usa 1 por padrão
+  const currentPage = Number(searchParams.get('pagina')) || 1;
+  const gener = searchParams.get('genero') || 'crime';
+
   useEffect(() => {
     if (!isLoading) {
-      getMovies(currentPage, genero);
+      getMovies(currentPage, gener); // Inclui o gênero na chamada da função
     }
-  }, [currentPage, isLoading, genero]); // Atualiza os filmes ao mudar o gênero ou a página
+  }, [currentPage, gener, isLoading]); // Adiciona `gener` como dependência
 
-  const getMovies = (page: number, genre: string) => {
+  const getMovies = (page: number, gener: string) => {
     const token = Cookies.get('authToken');
 
     if (!token) {
@@ -72,7 +72,7 @@ export default function MovieList() {
         Authorization: `Bearer ${token}`,
       },
       params: {
-        genero: genre,  // Passa o gênero para a requisição
+        genero: gener, // Passa o gênero explicitamente como objeto
         pagina: page,
         limite: 40,
         rating: true,
@@ -89,12 +89,12 @@ export default function MovieList() {
 
   const handlePagination = (page: number) => {
     if (page < 1) return; // Evita páginas negativas
-    router.push(`?genero=${genero}&pagina=${page}&limite=40&rating=true`);
+    router.push(`?pagina=${page}`); // Inclui o gênero na navegação
   };
 
   if (isLoading) {
     // Enquanto valida o token, retorna um carregamento ou tela em branco
-    return <div className="loading">Validando sessão...</div>;
+    return <div className="loading"></div>;
   }
 
   return (
@@ -104,19 +104,6 @@ export default function MovieList() {
           <MovieCard key={movie.id} movie={movie} />
         ))}
       </ul>
-
-      {/* Paginação */}
-      <div className="pagination">
-        <button
-          onClick={() => handlePagination(currentPage - 1)}
-          disabled={currentPage <= 1}
-        >
-          Anterior
-        </button>
-        <button onClick={() => handlePagination(currentPage + 1)}>
-          Próximo
-        </button>
-      </div>
     </>
   );
 }
