@@ -89,3 +89,28 @@ body {
   border-radius: 0;                       /* Mantém bordas retas */
 }
 
+.background-image-container {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  width: 100%;
+  height: 100%;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5); /* Ajuste a opacidade */
+    z-index: -1; /* Garanta que o pseudo-elemento fique atrás */
+    pointer-events: none; /* Permite cliques nos elementos acima */
+  }
+
+  .background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    z-index: -2; /* Imagem fica atrás do pseudo-elemento */
+  }
+}
+

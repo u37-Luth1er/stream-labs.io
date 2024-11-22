@@ -32,8 +32,7 @@ export default function RegisterPage(){
         </a>
 
         <h2 className="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
-          Bem vindo a plataforma 
-          <p>Busplay 🦑</p>
+          <p>Stream Labs 🦑</p>
         </h2>
 
         <p className="mt-4 leading-relaxed text-white/90">
@@ -160,22 +159,22 @@ export default function RegisterPage(){
                 type="checkbox"
                 id="MarketingAccept"
                 name="marketing_accept"
-                className="size-5 rounded-md border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:focus:ring-offset-gray-900"
+                className="size-5 rounded-md border-red-200 bg-white shadow-sm dark:border-rose-700 dark:bg-red-800 dark:focus:ring-offset-red-900"
               />
 
               <span className="text-sm text-gray-700 dark:text-gray-200">
-              Eu quero receber e-mails sobre eventos, atualizações de produtos e anúncios da empresa.
+              Aceito os termos e condições.
               </span>
             </label>
           </div>
 
           <div className="col-span-6">
             <p className="text-sm text-gray-500 dark:text-gray-400">
-            Ao criar sua conta você aceita os
+             Ao criar sua conta você aceita os{" "} 
                 <a href="#" className="text-gray-700 underline dark:text-gray-200">
                     termos e condições
                 </a>
-                e
+                {" "}e{" "}
                 <a href="#" className="text-gray-700 underline dark:text-gray-200">
                     política de privacidade
                 </a>.
@@ -185,14 +184,14 @@ export default function RegisterPage(){
 
           <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
             <button
-              className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 dark:hover:bg-blue-700 dark:hover:text-white"
+              className="inline-block shrink-0 rounded-md border border-rose-600 bg-rose-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-red-600 focus:outline-none focus:ring active:text-blue-500 dark:hover:bg-blue-700 dark:hover:text-white"
             >
-              Create an account
+              Criar Conta
             </button>
 
             <p className="mt-4 text-sm text-gray-500 sm:mt-0 dark:text-gray-400">
-              Already have an account?
-              <a href="#" className="text-gray-700 underline dark:text-gray-200">Log in</a>.
+              Já tem uma conta ?
+              <a href="#" className="text-gray-700 underline dark:text-gray-200"> Faça Login</a>.
             </p>
           </div>
         </form>

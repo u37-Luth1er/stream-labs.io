@@ -32,13 +32,13 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         
         {/* Background full-screen fixed */}
-        <div className="fixed inset-0 -z-10 w-full h-full">
+        <div className="background-image-container">
           <AspectRatio ratio={16 / 9} className="w-screen h-screen">
             <Image
               src="https://assets.nflxext.com/ffe/siteui/vlv3/03ad76d1-e184-4d99-ae7d-708672fa1ac2/web/BR-pt-20241111-TRIFECTA-perspective_1b6d896f-f960-4456-8070-9d4b4a68946d_large.jpg"
               alt="Background Image"
               layout="fill"
-              className="object-cover"
+              className="background-image"
             />
           </AspectRatio>
         </div>
